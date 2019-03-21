@@ -1,5 +1,6 @@
 package com.example.androidapptest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -84,7 +85,8 @@ public class Main2Activity extends AppCompatActivity
 
         if (id == R.id.nav_first_layout) {
             // Handle the camera action
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new firstFragment()).commit();
+            startActivity(new Intent( this,ListDisplay.class));
+            //fragmentManager.beginTransaction().replace(R.id.content_frame,new firstFragment()).commit();
         } else if (id == R.id.nav_second_layout) {
             fragmentManager.beginTransaction().replace(R.id.content_frame,new secondFragment()).commit();
         } else if (id == R.id.nav_third_layout) {
@@ -99,4 +101,5 @@ public class Main2Activity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
 }
