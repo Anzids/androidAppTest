@@ -5,9 +5,10 @@
     android:orientation="vertical" >
 
     <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:id="@+id/imgviewMeteo"
+        android:layout_marginTop = "200dp"
         />
 
     <LinearLayout
@@ -22,7 +23,7 @@
             android:layout_weight="50"
             android:gravity="right"
             android:textSize="20dp"
-            ></TextView>
+            android:layout_marginTop = "200dp" ></TextView>
 
         <TextView
             android:id="@+id/textViewDesc"
@@ -32,7 +33,8 @@
             android:gravity="center"
             android:textSize="20dp"
             android:text="°C"
-            android:textColor="@color/colormin"></TextView>
+            android:textColor="@color/colormin"
+            android:layout_marginTop = "200dp"></TextView>
 
 
     </LinearLayout>
@@ -44,7 +46,13 @@
         android:gravity="center"
         android:textSize="20dp"
         android:text="°C"
-        android:textColor="@color/colormax"></TextView>
-
+        android:textColor="@color/colormax"
+        android:layout_marginTop = "200dp"></TextView>
+    <ImageView
+        android:layout_width="410dp"
+        android:layout_height="150dp"
+        android:id="@+id/imgviewgrande"
+        android:layout_marginTop = "50dp"
+        />
 
 </RelativeLayout>
