@@ -32,13 +32,13 @@ public class MainActivity extends AppCompatActivity {
         bConn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edIDT.getText().toString().equals("admin") &&
-                        edMDP.getText().toString().equals("admin")) {
-                    Toast.makeText(getApplicationContext(),"Connexion",Toast.LENGTH_SHORT).show();
+                if(edIDT.getText().toString().equals("") &&
+                        edMDP.getText().toString().equals("")) {
+                    Toast.makeText(getApplicationContext(),"bienn !!!",Toast.LENGTH_SHORT).show();
 
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getApplicationContext(), "Mot de passe ou identifiant incorrect ",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "mot de passe ou identifiant faux ",Toast.LENGTH_SHORT).show();
                 }
             }
         });
