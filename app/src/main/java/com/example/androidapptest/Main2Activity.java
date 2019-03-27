@@ -90,7 +90,8 @@ public class Main2Activity extends AppCompatActivity
         } else if (id == R.id.nav_second_layout) {
             fragmentManager.beginTransaction().replace(R.id.content_frame,new secondFragment()).commit();
         } else if (id == R.id.nav_third_layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new ThirdFragment()).commit();
+          //  fragmentManager.beginTransaction().replace(R.id.content_frame,new ThirdFragment()).commit();
+            startActivity(new Intent( this,ListLocation.class));
         }  else if (id == R.id.nav_share) {
 
         } else if (id == R.id.nav_send) {

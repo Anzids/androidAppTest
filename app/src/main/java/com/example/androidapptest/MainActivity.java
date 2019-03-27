@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         bConn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(edIDT.getText().toString().equals("admin") &&
-                        edMDP.getText().toString().equals("admin")) {
+                if(edIDT.getText().toString().equals("") &&
+                        edMDP.getText().toString().equals("")) {
                     Toast.makeText(getApplicationContext(),"bienn !!!",Toast.LENGTH_SHORT).show();
 
                     startActivity(intent);
