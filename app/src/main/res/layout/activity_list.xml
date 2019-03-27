@@ -4,18 +4,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <ImageView
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:id="@+id/imgviewMeteo"
-        android:layout_marginTop = "200dp"
-        />
-
+    <!--android:layout_marginTop = "200dp"-->
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_below="@+id/imgviewgrande"
+        android:gravity="center_horizontal">
 
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:id="@+id/imgviewMeteo"
+
+            />
         <TextView
             android:id="@+id/textViewDay"
             android:layout_width="fill_parent"
@@ -23,7 +25,7 @@
             android:layout_weight="50"
             android:gravity="right"
             android:textSize="20dp"
-            android:layout_marginTop = "200dp" ></TextView>
+             ></TextView>
 
         <TextView
             android:id="@+id/textViewDesc"
@@ -34,25 +36,26 @@
             android:textSize="20dp"
             android:text="°C"
             android:textColor="@color/colormin"
-            android:layout_marginTop = "200dp"></TextView>
+            ></TextView>
 
 
+        <TextView
+            android:id="@+id/textViewtmax"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="40"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:text="°C"
+            android:textColor="@color/colormax"
+            ></TextView>
     </LinearLayout>
-    <TextView
-        android:id="@+id/textViewtmax"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="40"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:text="°C"
-        android:textColor="@color/colormax"
-        android:layout_marginTop = "200dp"></TextView>
     <ImageView
         android:layout_width="410dp"
         android:layout_height="150dp"
         android:id="@+id/imgviewgrande"
-        android:layout_marginTop = "50dp"
+        android:layout_marginTop="50dp"
+
         />
 
 </RelativeLayout>

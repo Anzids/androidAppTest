@@ -55,7 +55,7 @@ public class ListAdapter extends ArrayAdapter<FcstDay> {
        ImageView imageView =(ImageView) rowview.findViewById(R.id.imgviewMeteo);
        ImageView imageView2 =(ImageView) rowview.findViewById(R.id.imgviewgrande);
         FcstDay dayToShow = getItem(i);
-    textViewDay.setText(dayToShow.getDate());
+    textViewDay.setText(dayToShow.getDay_short());
     textViewDesc.setText(dayToShow.getTmin()+"°C");
     textViewtmax.setText(dayToShow.getTmax()+"°C");
     Picasso.get().load(dayToShow.getIcon()).into(imageView);
