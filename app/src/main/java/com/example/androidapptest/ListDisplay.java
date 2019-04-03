@@ -1,5 +1,6 @@
 package com.example.androidapptest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -15,6 +16,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.Serializable;
 import java.util.ArrayList;
 
 
@@ -43,17 +45,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.view.View;
+import android.widget.AdapterView;
+
 public class ListDisplay  extends AppCompatActivity {
         List<FcstDay> m_lsStrings=new ArrayList<FcstDay>();
         ListAdapter m_adapter;
+    ArrayList<FcstDay> list = new ArrayList<>();
 
-        private String URLstring = "https://www.prevision-meteo.ch/services/json/grenoble";
+
+    private String URLstring = "https://www.prevision-meteo.ch/services/json/grenoble";
         private TextView textView;
-    private TextView textView2;
+        private TextView textView2;
         private ListView customListView;
         private ImageView photo;
         private SwipeRefreshLayout swiperefreshLayout;
-    private FcstDay fcstDay = new FcstDay();
+        private FcstDay fcstDay = new FcstDay();
 
 
     @Override
@@ -85,6 +92,16 @@ public class ListDisplay  extends AppCompatActivity {
             }
         },0);
            // requestJSON();
+
+        customListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(ListDisplay.this,InfosDetails.class);
+                intent.putExtra("fcstDay", m_adapter.getItem(i).toJSONText());
+                startActivity(intent);
+            }
+        });
+
         }
 
         private void requestJSON(){
@@ -169,7 +186,47 @@ public class ListDisplay  extends AppCompatActivity {
             requestQueue.add(jsonRequest);
 
         }
+    private  void informationCity(){
+        swiperefreshLayout.setRefreshing(true);
+        m_lsStrings.clear();
 
+        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URLstring,null,
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            for (int j=0;j<1;j++) {
+                                JSONObject fcst_day_j = response.getJSONObject("fcst_day_" + j);
+                                fcstDay = new FcstDay();
+                                fcstDay.setDate(fcst_day_j.getString("date"));
+                                fcstDay.setDay_short(fcst_day_j.getString("day_short"));
+                                fcstDay.setIcon(fcst_day_j.getString("icon"));
+                                fcstDay.setDay_long("Aujourd'hui");
+                                fcstDay.setDay_long(fcst_day_j.getString("day_long"));
+                                fcstDay.setTmin(fcst_day_j.getString("tmin"));
+                                fcstDay.setTmax(fcst_day_j.getString("tmax"));
+
+                                list.add(fcstDay);
+                            }
+                            m_adapter.addAll(list);
+                            m_adapter.notifyDataSetChanged();
+                            swiperefreshLayout.setRefreshing(false);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        //displaying the error in toast if occurrs
+                        Toast.makeText(ListDisplay.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(jsonRequest);
+
+    }
 
 
     }

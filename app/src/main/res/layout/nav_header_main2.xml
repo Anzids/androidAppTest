@@ -6,11 +6,13 @@
    >
 
     <ImageView
+        android:contentDescription="@null"
         android:layout_width="match_parent"
         android:layout_height="240dp"
         android:adjustViewBounds="true"
         android:scaleType="centerCrop"
-        android:src="@mipmap/ic_launcher_univ" />
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_galaxy"/>
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -26,12 +28,14 @@
         android:layout_height="wrap_content"
         android:contentDescription="@string/nav_header_desc"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
-        app:srcCompat="@mipmap/ic_launcher_umeteo" />
+        android:background="@android:color/transparent"
+        app:srcCompat="@mipmap/ic_launcher_round" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:textColor="@android:color/white"
         android:text="ANZID-GUEVARA"
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
@@ -39,6 +43,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
         android:text="Développement Android" />
 
 </LinearLayout>

@@ -2,7 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/blue_gradient">
 
     <!--android:layout_marginTop = "200dp"-->
     <LinearLayout
@@ -50,6 +52,7 @@
             android:textColor="@color/colormax"
             ></TextView>
     </LinearLayout>
+
     <ImageView
         android:layout_width="410dp"
         android:layout_height="150dp"

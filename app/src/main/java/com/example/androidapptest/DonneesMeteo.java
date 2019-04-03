@@ -9,11 +9,11 @@ public class DonneesMeteo {
 
     public void setCityInfo(CityInfo city_info) { this.city_info = city_info; }
 
-    private ForecastInfo forecast_info;
+    private FcstDay forecast_info;
 
-    public ForecastInfo getForecastInfo() { return this.forecast_info; }
+    public FcstDay getForecastInfo() { return this.forecast_info; }
 
-    public void setForecastInfo(ForecastInfo forecast_info) { this.forecast_info = forecast_info; }
+    public void setForecastInfo(FcstDay forecast_info) { this.forecast_info = forecast_info; }
 
     private CurrentCondition current_condition;
 
@@ -60,7 +60,7 @@ public class DonneesMeteo {
             JSONObject object = new JSONObject(sJsonString);
             city_info= new CityInfo(new JSONObject(object.getString("city_info")));
             current_condition= new CurrentCondition(new JSONObject(object.getString("current_condition")));
-            forecast_info= new ForecastInfo(new JSONObject(object.getString("forecast_info")));
+            forecast_info= new FcstDay(new JSONObject(object.getString("forecast_info")));
             fcst_day_0= new FcstDay(new JSONObject(object.getString("fcst_day_0")));
             fcst_day_1= new FcstDay(new JSONObject(object.getString("fcst_day_1")));
             fcst_day_2= new FcstDay(new JSONObject(object.getString("fcst_day_2")));

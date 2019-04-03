@@ -45,6 +45,9 @@ public class FcstDay {
 
     }
 
+    public String toJSONText(){
+        return this.date+" "+this.day_short+""+this.day_long;
+    }
     public String getDate() {
         return date;
     }
