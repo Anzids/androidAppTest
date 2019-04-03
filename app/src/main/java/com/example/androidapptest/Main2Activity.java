@@ -1,10 +1,13 @@
 package com.example.androidapptest;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.app.FragmentManager;
+import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -14,6 +17,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.Calendar;
 
 public class Main2Activity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -42,6 +47,18 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        boolean isNight = hour < 6 || hour > 18;
+
+        int currentDrawable = isNight ? R.drawable.night : R.drawable.blue_gradient;
+        View decorView = getWindow().getDecorView();
+        Drawable drawable = ContextCompat.getDrawable(this, currentDrawable);
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+            decorView.setBackgroundDrawable(drawable);
+        else
+            decorView.setBackground(drawable);
     }
 
     @Override
