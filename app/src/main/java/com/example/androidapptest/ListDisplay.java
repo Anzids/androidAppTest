@@ -51,8 +51,10 @@ import android.widget.AdapterView;
 public class ListDisplay  extends AppCompatActivity {
         List<FcstDay> m_lsStrings=new ArrayList<FcstDay>();
         ListAdapter m_adapter;
+    ArrayList<FcstDay> list = new ArrayList<>();
 
-        private String URLstring = "https://www.prevision-meteo.ch/services/json/grenoble";
+
+    private String URLstring = "https://www.prevision-meteo.ch/services/json/grenoble";
         private TextView textView;
         private TextView textView2;
         private ListView customListView;
@@ -95,7 +97,7 @@ public class ListDisplay  extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(ListDisplay.this,InfosDetails.class);
-                intent.putExtra("fcstDay", (Serializable) m_lsStrings.get(i));
+                intent.putExtra("fcstDay", m_adapter.getItem(i).toJSONText());
                 startActivity(intent);
             }
         });
@@ -193,7 +195,6 @@ public class ListDisplay  extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try {
-                            ArrayList<FcstDay> list = new ArrayList<>();
                             for (int j=0;j<1;j++) {
                                 JSONObject fcst_day_j = response.getJSONObject("fcst_day_" + j);
                                 fcstDay = new FcstDay();

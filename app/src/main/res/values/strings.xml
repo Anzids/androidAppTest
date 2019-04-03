@@ -10,4 +10,5 @@
     <string name="listDisplay">Settings</string>
     <string name="title_activity_list">list</string>
     <string name="title_activity_list_location">ListLocation</string>
+    <string name="title_infos_details">ListLocation</string>
 </resources>

@@ -14,8 +14,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ListLocation"
-            android:label="@string/title_activity_list_location"
+        android:name=".ListLocation"
+        android:label="@string/title_activity_list_location"
+        android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".InfosDetails"
+            android:label="@string/title_infos_details"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".list"
