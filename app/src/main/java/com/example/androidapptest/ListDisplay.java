@@ -1,8 +1,12 @@
 package com.example.androidapptest;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.design.widget.NavigationView;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -43,6 +47,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import android.view.View;
@@ -72,7 +77,7 @@ public class ListDisplay  extends AppCompatActivity {
         textView2 = findViewById(R.id.textview2);
         photo=findViewById(R.id.photo);*/
        // m_adapter=new ArrayAdapter<FcstDay>(this, android.R.layout.simple_list_item_1,m_lsStrings);
-        customListView= findViewById(R.id.list_view);
+        //customListView= findViewById(R.id.list_view);
         swiperefreshLayout=findViewById(R.id.swiperefreshLayout);
         m_adapter= new ListAdapter(this,0);
         customListView.setAdapter(m_adapter);
@@ -101,6 +106,38 @@ public class ListDisplay  extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+        Calendar cal = Calendar.getInstance();
+        int hour = cal.get(Calendar.HOUR_OF_DAY);
+        int isNight;
+        int currentDrawable=R.drawable.blue_gradient;
+
+        if(hour < 6 || hour > 20)
+            isNight=1;
+        else
+        if(hour < 20 || hour > 18)
+            isNight=2;
+        else
+            isNight=3;
+
+        switch(isNight){
+            case 1:
+                currentDrawable=R.drawable.darknight_gradient;
+                break;
+            case 2:
+                currentDrawable=R.drawable.night_gradient;
+                break;
+            case 3:
+                currentDrawable=R.drawable.blue_gradient;
+                break;
+        }
+        View decorView = getWindow().getDecorView();
+        Drawable drawable = ContextCompat.getDrawable(this, currentDrawable);
+        if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
+            decorView.setBackgroundDrawable(drawable);
+        else
+            decorView.setBackground(drawable);
 
         }
 
@@ -141,12 +178,9 @@ public class ListDisplay  extends AppCompatActivity {
             requestQueue.add(jsonRequest);
 
         }
-        private  void PopulateSimpleListItem1(){
+        private void PopulateSimpleListItem1(){
             swiperefreshLayout.setRefreshing(true);
             m_lsStrings.clear();
-
-
-
 
             JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URLstring,null,
                     new Response.Listener<JSONObject>() {
@@ -186,47 +220,5 @@ public class ListDisplay  extends AppCompatActivity {
             requestQueue.add(jsonRequest);
 
         }
-    private  void informationCity(){
-        swiperefreshLayout.setRefreshing(true);
-        m_lsStrings.clear();
-
-        JsonObjectRequest jsonRequest = new JsonObjectRequest(Request.Method.GET, URLstring,null,
-                new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            for (int j=0;j<1;j++) {
-                                JSONObject fcst_day_j = response.getJSONObject("fcst_day_" + j);
-                                fcstDay = new FcstDay();
-                                fcstDay.setDate(fcst_day_j.getString("date"));
-                                fcstDay.setDay_short(fcst_day_j.getString("day_short"));
-                                fcstDay.setIcon(fcst_day_j.getString("icon"));
-                                fcstDay.setDay_long("Aujourd'hui");
-                                fcstDay.setDay_long(fcst_day_j.getString("day_long"));
-                                fcstDay.setTmin(fcst_day_j.getString("tmin"));
-                                fcstDay.setTmax(fcst_day_j.getString("tmax"));
-
-                                list.add(fcstDay);
-                            }
-                            m_adapter.addAll(list);
-                            m_adapter.notifyDataSetChanged();
-                            swiperefreshLayout.setRefreshing(false);
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        //displaying the error in toast if occurrs
-                        Toast.makeText(ListDisplay.this, error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                });
-        RequestQueue requestQueue = Volley.newRequestQueue(this);
-        requestQueue.add(jsonRequest);
-
-    }
-
 
     }
