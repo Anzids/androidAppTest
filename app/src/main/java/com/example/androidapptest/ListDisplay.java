@@ -1,11 +1,19 @@
 package com.example.androidapptest;
 
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.app.Activity;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -48,7 +56,7 @@ import java.util.List;
 import android.view.View;
 import android.widget.AdapterView;
 
-public class ListDisplay  extends AppCompatActivity {
+public class ListDisplay  extends AppCompatActivity  implements NavigationView.OnNavigationItemSelectedListener {
         List<FcstDay> m_lsStrings=new ArrayList<FcstDay>();
         ListAdapter m_adapter;
     ArrayList<FcstDay> list = new ArrayList<>();
@@ -67,6 +75,9 @@ public class ListDisplay  extends AppCompatActivity {
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.first_layout);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarFIRST);
+        setSupportActionBar(toolbar);
+
 
         /*textView = findViewById(R.id.textview277);
         textView2 = findViewById(R.id.textview2);
@@ -229,4 +240,30 @@ public class ListDisplay  extends AppCompatActivity {
     }
 
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.exemple, menu);
+        return true;
     }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+            if (id == R.id.item1){
+                startActivity(new Intent( this,ListDisplay.class));
+            }
+           else if (id==R.id.item2){
+                startActivity(new Intent( this,secondFragment.class));}
+            else if ( id == R.id.item3){
+                startActivity(new Intent( this,ListLocation.class));}
+
+        return true;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        return false;
+    }
+}

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.app.FragmentManager;
+import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -48,7 +49,7 @@ public class Main2Activity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        Calendar cal = Calendar.getInstance();
+        /*Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
         boolean isNight = hour < 6 || hour > 18;
 
@@ -58,7 +59,7 @@ public class Main2Activity extends AppCompatActivity
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)
             decorView.setBackgroundDrawable(drawable);
         else
-            decorView.setBackground(drawable);
+            decorView.setBackground(drawable);*/
     }
 
     @Override
@@ -105,8 +106,9 @@ public class Main2Activity extends AppCompatActivity
             startActivity(new Intent( this,ListDisplay.class));
             //fragmentManager.beginTransaction().replace(R.id.content_frame,new firstFragment()).commit();
         } else if (id == R.id.nav_second_layout) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame,new secondFragment()).commit();
-        } else if (id == R.id.nav_third_layout) {
+            startActivity(new Intent( this,secondFragment.class));
+        }
+        else if (id == R.id.nav_third_layout) {
           //  fragmentManager.beginTransaction().replace(R.id.content_frame,new ThirdFragment()).commit();
             startActivity(new Intent( this,ListLocation.class));
         }  else if (id == R.id.nav_share) {
