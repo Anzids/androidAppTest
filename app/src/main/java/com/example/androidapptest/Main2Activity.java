@@ -4,8 +4,6 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.app.FragmentManager;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -51,9 +49,28 @@ public class Main2Activity extends AppCompatActivity
 
         /*Calendar cal = Calendar.getInstance();
         int hour = cal.get(Calendar.HOUR_OF_DAY);
-        boolean isNight = hour < 6 || hour > 18;
+        int isNight;
+        int currentDrawable=R.drawable.blue_gradient;
 
-        int currentDrawable = isNight ? R.drawable.night : R.drawable.blue_gradient;
+        if(hour < 6 || hour > 20)
+            isNight=1;
+        else
+            if(hour < 20 || hour > 18)
+                isNight=2;
+            else
+                isNight=3;
+
+        switch(isNight){
+            case 1:
+                currentDrawable=R.drawable.darknight_gradient;
+                break;
+            case 2:
+                currentDrawable=R.drawable.night_gradient;
+                break;
+            case 3:
+                currentDrawable=R.drawable.blue_gradient;
+                break;
+        }
         View decorView = getWindow().getDecorView();
         Drawable drawable = ContextCompat.getDrawable(this, currentDrawable);
         if(Build.VERSION.SDK_INT < Build.VERSION_CODES.JELLY_BEAN)

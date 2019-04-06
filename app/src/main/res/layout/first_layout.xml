@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/blue_gradient">
-
+    >
+    <!--android:background="@drawable/blue_gradient"-->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,10 +26,13 @@
     android:id="@+id/swiperefreshLayout">
 
 
-<ListView
-    android:id="@+id/list_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"></ListView>
+    <ImageView
+        android:layout_width="410dp"
+        android:layout_height="150dp"
+        android:id="@+id/imgviewgrande"
+        android:layout_marginTop="50dp"
+
+        />
 
 </android.support.v4.widget.SwipeRefreshLayout>
 
