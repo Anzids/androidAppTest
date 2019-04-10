@@ -3,7 +3,7 @@ package com.example.androidapptest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.Date;
+import java.util.ArrayList;
 
 public class FcstDay {
     public String date;
@@ -15,6 +15,8 @@ public class FcstDay {
     public String condition_key	;
     public String icon	;
     public String icon_big;
+    public String erreur;
+    private ArrayList<HourlyData> hourly_data;
 
     public FcstDay() {
 
@@ -45,9 +47,22 @@ public class FcstDay {
 
     }
 
-    public String toJSONText(){
-        return this.date+" "+this.day_short+""+this.day_long;
+    public String toJSONText(int i){
+        return this.tmin +"_"+this.tmax+"_"+this.getDay_short()+"_"+this.getDate()+"_"+this.getCondition()+"_"+this.getIcon_big()+"_"+i;
     }
+
+    public ArrayList toJSONArray(){
+        ArrayList arrayList=new ArrayList();
+        //arrayList.addAll(this.getHourly_data());
+        arrayList.add(this.tmin);
+        arrayList.add(this.tmax);
+        arrayList.add(this.getDay_short());
+
+        //return this.tmin +"_"+this.tmax+"_"+this.getDay_short()+"_"+this.getDate()+"_"+this.getCondition()+"_"+this.getIcon_big();
+    return  arrayList;
+    }
+
+
     public String getDate() {
         return date;
     }
@@ -65,7 +80,7 @@ public class FcstDay {
     }
 
     public String getDay_long() {
-        return day_short;
+        return day_long;
     }
 
     public void setDay_long(String day_long) {
@@ -115,6 +130,22 @@ public class FcstDay {
 
     public void setIcon_big(String icon_big) {
         this.icon_big= icon_big;
+    }
+
+    public String geterreur() {
+        return erreur;
+    }
+
+    public void setErreur(String erreur  ) {
+        this.erreur = erreur;
+    }
+
+    public ArrayList<HourlyData> getHourly_data() {
+        return hourly_data;
+    }
+
+    public void setHourly_data(ArrayList<HourlyData> hourly_data) {
+        this.hourly_data = hourly_data;
     }
 
 }

@@ -53,12 +53,14 @@
             ></TextView>
     </LinearLayout>
 
+
     <ImageView
         android:layout_width="410dp"
         android:layout_height="150dp"
         android:id="@+id/imgviewgrande"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="100dp"
 
         />
+
 
 </RelativeLayout>

@@ -1,14 +1,16 @@
 <resources>
     <string name="app_name">MeteoGA</string>
-    <string name="title_activity_main2">Main2Activity</string>
+    <string name="title_activity_main2">Accueil</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
-    <string name="action_settings">Settings</string>
-    <string name="listDisplay">Settings</string>
+    <string name="action_settings">Accueil</string>
+    <string name="listDisplay">Accueil</string>
     <string name="title_activity_list">list</string>
-    <string name="title_activity_list_location">ListLocation</string>
-    <string name="title_infos_details">ListLocation</string>
+    <string name="title_activity_list_location">Location</string>
+    <string name="title_infos_details">Location</string>
+    <string name="title_activity_hourly_activity">hourly_activity</string>
+    <string name="title_activity_meteo_second">Météo</string>
 </resources>

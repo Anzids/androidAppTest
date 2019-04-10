@@ -3,8 +3,7 @@
     package="com.example.androidapptest">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -14,13 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-        android:name=".ListLocation"
-        android:label="@string/title_activity_list_location"
-        android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:name=".meteoSecond"
+            android:label="@string/title_activity_meteo_second"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".hourly_activity"
+            android:label="@string/title_activity_hourly_activity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ListLocation"
+            android:label="@string/title_activity_list_location"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".InfosDetails"
             android:label="@string/title_infos_details"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".list"
             android:label="@string/title_activity_list"
@@ -34,6 +41,13 @@
             android:label="@string/listDisplay"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".meteo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

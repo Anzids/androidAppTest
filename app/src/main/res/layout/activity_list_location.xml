@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    >
-    <!--android:background="@drawable/blue_gradient"-->
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
         <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+            android:id="@+id/toolbarFIRST2"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -20,16 +20,25 @@
 
     </android.support.design.widget.AppBarLayout>
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@+id/toolbarFIRST2"
+        android:id="@+id/linearlayoutLocation"
+        android:gravity="center_horizontal"
+        tools:ignore="NotSibling">
     <TextView
         android:layout_width = "wrap_content"
         android:layout_height = "wrap_content"
         android:text = "Lieux"
         android:id = "@+id/titre"
-        android:layout_below = "@+id/textview"
-        android:layout_centerHorizontal = "true"
-        android:textColor = "#5F9EA0"
-        android:textSize = "35dp" />
 
+        android:layout_centerHorizontal = "true"
+        android:textColor = "#000000"
+        android:textSize = "35dp"
+        android:layout_marginTop="70dp"/>
+    </LinearLayout>
 
     <EditText
         android:layout_width="300dp"

@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.squareup.picasso.Picasso;
@@ -19,6 +20,7 @@ import java.util.Collection;
 public class ListAdapter extends ArrayAdapter<FcstDay> {
     private ArrayList<FcstDay> fcstDays;
     private Context context;
+    private  String erreur;
 
     public ListAdapter(@NonNull Context context, int resource){
         super(context,resource);
@@ -60,7 +62,8 @@ public class ListAdapter extends ArrayAdapter<FcstDay> {
     textViewtmax.setText(dayToShow.getTmax()+"°C");
     Picasso.get().load(dayToShow.getIcon()).into(imageView);
 if(i==0){
-        Picasso.get().load(dayToShow.getIcon()).into(imageView2);}
+        Picasso.get().load(dayToShow.getIcon()).into(imageView2);
+this.erreur=dayToShow.getDate();}
         else{
     imageView2.setVisibility(View.GONE);
 
@@ -77,4 +80,5 @@ if(i==0){
        fcstDays.addAll(collection);
        notifyDataSetChanged();
     }
+
 }
